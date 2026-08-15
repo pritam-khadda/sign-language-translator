@@ -1,0 +1,31 @@
+.btn-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.clear-btn {
+    background: #00ff99;
+    color: black;
+}
+
+.voice-btn {
+    background: #ffcc00;
+    color: black;
+}
+
+.test-btn {
+    background: red;
+    color: white;
+}
