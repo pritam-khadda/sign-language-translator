@@ -11,6 +11,10 @@ app = Flask(__name__)
 
 camera = cv2.VideoCapture(0, cv2.CAP_AVFOUNDATION)
 
+# Check camera
+if not camera.isOpened():
+    print("⚠️ Camera could not be opened.")
+
 
 # -----------------------------
 # FRAME GENERATOR
@@ -20,23 +24,26 @@ def generate_frames():
         success, frame = camera.read()
 
         if not success:
+            print("⚠️ Failed to read camera frame.")
             continue
 
-        frame = cv2.flip(frame, 1)
-
+        # AI processing
+        # NOTE: process_frame() already flips the frame,
+        # so we don't flip it here again.
         frame = process_frame(frame)
 
+        # Convert frame to JPEG
         ret, buffer = cv2.imencode('.jpg', frame)
 
         if not ret:
             continue
 
-        frame = buffer.tobytes()
+        frame_bytes = buffer.tobytes()
 
         yield (
             b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n'
-            + frame +
+            + frame_bytes +
             b'\r\n'
         )
 
@@ -63,8 +70,10 @@ def test():
 @app.route('/clear')
 def clear():
     reset()
+
     return jsonify({
-        "status": "cleared"
+        "status": "cleared",
+        "message": "Word cleared successfully"
     })
 
 
@@ -85,7 +94,6 @@ def video_feed():
 @app.route('/get_data')
 def get_data():
 
-    # Import current values every request
     from utils.predictor import (
         current_word,
         last_pred,
@@ -126,6 +134,9 @@ def toggle_voice_api():
 # RUN APP
 # -----------------------------
 if __name__ == "__main__":
+    print("🚀 Sign Language Translator starting...")
+    print("🌐 Open: http://127.0.0.1:8000")
+
     app.run(
         host="0.0.0.0",
         port=8000,
