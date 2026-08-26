@@ -26,3 +26,4 @@ An intelligent web application that detects and translates American Sign Languag
 ```bash
 git clone [https://github.com/pritam-khadda/sign-language-translator.git](https://github.com/pritam-khadda/sign-language-translator.git)
 cd sign-language-translator
+```
