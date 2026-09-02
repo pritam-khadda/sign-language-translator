@@ -4,6 +4,12 @@ An intelligent web application that detects and translates American Sign Languag
 
 ---
 
+## 📸 Project Demo
+
+![Sign Speak AI Demo](screenshots/sign-language-demo.jpg)
+
+---
+
 ### ✨ Key Features
 - 🎥 **Real-time Gesture Recognition:** Powered by MediaPipe Hands & OpenCV for low-latency hand tracking.
 - 🧠 **Trained ML Classifier:** Accurately classifies hand landmarks into corresponding sign letters/words.
@@ -23,7 +29,7 @@ An intelligent web application that detects and translates American Sign Languag
 ### 🚀 Getting Started
 
 #### 1. Clone the Repository
+
 ```bash
-git clone [https://github.com/pritam-khadda/sign-language-translator.git](https://github.com/pritam-khadda/sign-language-translator.git)
+git clone https://github.com/pritam-khadda/sign-language-translator.git
 cd sign-language-translator
-```
